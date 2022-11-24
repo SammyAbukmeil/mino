@@ -1,21 +1,26 @@
 import * as Speech from "expo-speech";
-import { AspectRatio, Box, Heading, Image } from "native-base";
+import { Box, Heading } from "native-base";
+import { Image } from "react-native";
 import React from "react";
 import { TouchableWithoutFeedback } from "react-native";
 
 const Block = ({ img, textToSpeak }) => (
   <TouchableWithoutFeedback onPress={() => Speech.speak(textToSpeak)}>
-    <Box rounded="lg" borderColor="coolGray.200" borderWidth="1" mt="20">
+    <Box
+      m="5"
+      rounded="xl"
+      borderColor="coolGray.200"
+      borderWidth="1"
+      mt="3"
+      mb="5"
+    >
       <Box>
-        <AspectRatio w="100%" ratio={16 / 9}>
-          <Image
-            source={{
-              uri: img,
-            }}
-            alt="image"
-          />
-        </AspectRatio>
-        <Heading size="md" textAlign="center" p="4">
+        <Image
+          source={img}
+          alt="Speak block"
+          style={{ width: "100%", height: 300, borderRadius: 10 }}
+        />
+        <Heading size="md" textAlign="center" p="4" backgroundColor="#f9f9f9">
           {textToSpeak}
         </Heading>
       </Box>
