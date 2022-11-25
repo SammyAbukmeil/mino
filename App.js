@@ -12,11 +12,6 @@ import { Image, View, Platform, StatusBar } from "react-native";
 import React from "react";
 import Block from "./components/Block/Block";
 
-const logo = require("./assets/mino-logo.png");
-const foodImg = require("./assets/food.jpg");
-const sleepImg = require("./assets/sleep.jpg");
-const outsideImg = require("./assets/outside.jpg");
-
 const HomeScreen = () => {};
 
 export default () => {
@@ -38,7 +33,7 @@ export default () => {
           >
             <Box w="15%" m="5">
               <Image
-                source={logo}
+                source={require("./assets/mino-logo.png")}
                 alt="Mino Logo"
                 style={{ width: 60, height: 60 }}
               />
@@ -67,11 +62,23 @@ export default () => {
             </Box>
           </Flex>
           <ScrollView>
-            <Block img={foodImg} textToSpeak="I want food" />
-            <Block img={sleepImg} textToSpeak="I want to sleep" />
-            <Block img={outsideImg} textToSpeak="I want to go outside" />
+            <Block
+              img={require("./assets/food.jpg")}
+              textToSpeak="I want food"
+            />
+            <Block
+              img={require("./assets/sleep.jpg")}
+              textToSpeak="I want to sleep"
+            />
+            <Block
+              img={require("./assets/outside.jpg")}
+              textToSpeak="I want to go outside"
+            />
+            <Block
+              img={require("./assets/home.jpg")}
+              textToSpeak="I want to go home"
+            />
             {/* <Block img={outsideImg} textToSpeak="I want to listen to music" />
-            <Block img={outsideImg} textToSpeak="I want to play on a phone" />
             <Block img={outsideImg} textToSpeak="I want to play on a phone" /> */}
           </ScrollView>
         </View>
