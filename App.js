@@ -22,6 +22,7 @@ export default () => {
           style={{
             paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
             paddingBottom: 100,
+            backgroundColor: "#f6f7fd",
           }}
         >
           <Flex
