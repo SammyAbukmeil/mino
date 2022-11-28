@@ -10,6 +10,7 @@ import {
 } from "native-base";
 import { Image, View, Platform, StatusBar } from "react-native";
 import React from "react";
+import { Card, Button, Icon } from "@rneui/themed";
 import Block from "./components/Block/Block";
 
 const HomeScreen = () => {};
@@ -32,13 +33,13 @@ export default () => {
             borderWidth="1"
             backgroundColor="#f9f9f9"
           >
-            <Box w="15%" m="5">
-              <Image
-                source={require("./assets/mino-logo.png")}
-                alt="Mino Logo"
+            <Card style={{ borderWidth: 0 }}>
+              <Card.Image
                 style={{ width: 60, height: 60 }}
+                alt="Mino Logo"
+                source={require("./assets/mino-logo.png")}
               />
-            </Box>
+            </Card>
             <Box w="25%" m="10" alignItems="flex-end">
               <Menu
                 w="190"
