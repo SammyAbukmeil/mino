@@ -1,7 +1,7 @@
+import { Button, Card } from "@rneui/themed";
 import * as Speech from "expo-speech";
 import React from "react";
-import { TouchableWithoutFeedback, Image } from "react-native";
-import { Card, Button, Icon } from "@rneui/themed";
+import { TouchableWithoutFeedback } from "react-native";
 
 const Block = ({ img, textToSpeak }) => (
   <TouchableWithoutFeedback onPress={() => Speech.speak(textToSpeak)}>
@@ -14,14 +14,14 @@ const Block = ({ img, textToSpeak }) => (
         {textToSpeak}
       </Card.Title>
       <Button
-        icon={
-          <Icon
-            name="surround-sound"
-            color="#ffffff"
-            type="AntDesign"
-            iconStyle={{ marginRight: 10 }}
-          />
-        }
+        // icon={
+        //   <Icon
+        //     name="surround-sound"
+        //     color="#ffffff"
+        //     type="AntDesign"
+        //     iconStyle={{ marginRight: 10 }}
+        //   />
+        // }
         buttonStyle={{
           borderRadius: 0,
           marginLeft: 0,

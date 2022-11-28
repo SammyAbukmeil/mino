@@ -1,16 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
-import {
-  Box,
-  Flex,
-  HamburgerIcon,
-  Menu,
-  NativeBaseProvider,
-  Pressable,
-  ScrollView,
-} from "native-base";
-import { Image, View, Platform, StatusBar } from "react-native";
+import { Box, Flex, NativeBaseProvider, ScrollView } from "native-base";
 import React from "react";
-import { Card, Button, Icon } from "@rneui/themed";
+import { Image, Platform, StatusBar, View } from "react-native";
 import Block from "./components/Block/Block";
 
 const HomeScreen = () => {};
@@ -33,15 +24,17 @@ export default () => {
             borderWidth="1"
             backgroundColor="#f9f9f9"
           >
-            <Card style={{ borderWidth: 0 }}>
-              <Card.Image
-                style={{ width: 60, height: 60 }}
-                alt="Mino Logo"
-                source={require("./assets/mino-logo.png")}
-              />
-            </Card>
+            <Image
+              source={require("./assets/mino-logo.png")}
+              style={{ width: 60, height: 60, margin: 20 }}
+            />
             <Box w="25%" m="10" alignItems="flex-end">
-              <Menu
+              <Icon
+                color="#fff"
+                name="menu"
+                onPress={() => props.navigation.toggleDrawer()}
+              />
+              {/* <Menu
                 w="190"
                 trigger={(triggerProps) => {
                   return (
@@ -60,7 +53,7 @@ export default () => {
                 <Menu.Item>Home</Menu.Item>
                 <Menu.Item>About</Menu.Item>
                 <Menu.Item>Contact</Menu.Item>
-              </Menu>
+              </Menu> */}
             </Box>
           </Flex>
           <ScrollView>
