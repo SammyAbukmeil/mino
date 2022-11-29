@@ -1,48 +1,27 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { Header } from "@rneui/themed";
-import { Image, ScrollView } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import Block from "./components/Block/Block";
+import HomeScreen from "./components/Screens/HomeScreen/HomeScreen";
+import SettingsScreen from "./components/Screens/SettingsScreen/SettingsScreen";
 
-const HomeScreen = () => {};
+const Stack = createNativeStackNavigator();
 
 export default () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Header
-          backgroundImageStyle={{}}
-          barStyle="default"
-          leftComponent={
-            <Image
-              source={require("./assets/mino-logo.png")}
-              style={{ width: 50, height: 50 }}
-            />
-          }
-          leftContainerStyle={{}}
-          linearGradientProps={{}}
-          placement="center"
-          rightComponent={{ icon: "menu", color: "#fff" }}
-          rightContainerStyle={{ margin: 15 }}
-          statusBarProps={{}}
-        />
-        <ScrollView>
-          <Block img={require("./assets/food.jpg")} textToSpeak="I want food" />
-          <Block
-            img={require("./assets/sleep.jpg")}
-            textToSpeak="I want to sleep"
+        <Stack.Navigator>
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Home"
+            component={HomeScreen}
           />
-          <Block
-            img={require("./assets/outside.jpg")}
-            textToSpeak="I want to go outside"
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Settings"
+            component={SettingsScreen}
           />
-          <Block
-            img={require("./assets/home.jpg")}
-            textToSpeak="I want to go home"
-          />
-          {/* <Block img={outsideImg} textToSpeak="I want to listen to music" />
-            <Block img={outsideImg} textToSpeak="I want to play on a phone" /> */}
-        </ScrollView>
+        </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );
