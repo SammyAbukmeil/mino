@@ -1,8 +1,15 @@
-import { Header } from "@rneui/themed";
-import { Button, Image, ScrollView } from "react-native";
+import { Button, Header, Icon, Overlay } from "@rneui/themed";
+import React, { useState } from "react";
+import { Image, ScrollView, StyleSheet, Text } from "react-native";
 import Block from "../../../components/Block/Block";
 
 const HomeScreen = ({ navigation }) => {
+  const [visible, setVisible] = useState(false);
+
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  };
+
   return (
     <>
       <Header
@@ -14,7 +21,15 @@ const HomeScreen = ({ navigation }) => {
           />
         }
         placement="center"
-        rightComponent={{ icon: "menu", color: "#fff" }}
+        rightComponent={
+          <Icon
+            name="menu"
+            color="#ffffff"
+            type="feather"
+            onPress={toggleOverlay}
+            buttonStyle={styles.button}
+          />
+        }
         rightContainerStyle={{ margin: 15 }}
       />
       <Button
@@ -41,8 +56,39 @@ const HomeScreen = ({ navigation }) => {
         {/* <Block img={outsideImg} textToSpeak="I want to listen to music" />
         <Block img={outsideImg} textToSpeak="I want to play on a phone" /> */}
       </ScrollView>
+      <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
+        <Icon
+          name="x"
+          type="feather"
+          color="black"
+          size={25}
+          iconStyle={{ marginRight: 10 }}
+          onPress={toggleOverlay}
+          style={styles.cross}
+        />
+        <Text style={styles.textPrimary}>Hello!</Text>
+        <Text style={styles.textSecondary}>
+          Welcome to React Native Elements
+        </Text>
+      </Overlay>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  cross: {
+    textAlign: "right",
+  },
+  textPrimary: {
+    marginVertical: 20,
+    textAlign: "center",
+    fontSize: 20,
+  },
+  textSecondary: {
+    marginBottom: 10,
+    textAlign: "center",
+    fontSize: 17,
+  },
+});
 
 export default HomeScreen;
