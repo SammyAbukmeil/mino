@@ -13,7 +13,7 @@ const AboutScreen = ({ navigation }) => {
       <ScrollView style={{ textAlign: "center", marginTop: 20 }}>
         <Text h2>About</Text>
         <Text style={{ padding: 20, lineHeight: 30, fontSize: 20 }}>
-          Mino is an app designed to help autistic children communicate.
+          Mino is an app designed to help give non verbal children a voice.
         </Text>
         <Text
           style={{
@@ -23,8 +23,8 @@ const AboutScreen = ({ navigation }) => {
             fontSize: 20,
           }}
         >
-          The children can click on the images to get the app to speak the words
-          for them.
+          Your child can communicate by clicking on the images and hearing the
+          app speak.
         </Text>
         <Text
           style={{
@@ -34,12 +34,22 @@ const AboutScreen = ({ navigation }) => {
             paddingBottom: 20,
           }}
         >
-          Currently we have a few predefined phrases, however, the app is still
-          in development. I’ll be adding more common phrases soon, and the
-          ability to upload your own.
+          Currently the app is still in development and only has a few
+          predefined phrases. We'll be adding more common phrases soon and
+          incorporating the ability to add your own phrases.
+        </Text>
+        <Text
+          style={{
+            paddingHorizontal: 20,
+            lineHeight: 30,
+            fontSize: 20,
+            paddingBottom: 20,
+          }}
+        >
+          We hope you find this app useful.
         </Text>
         <Text style={{ paddingHorizontal: 20, lineHeight: 30, fontSize: 20 }}>
-          To request a new feature, email
+          To provide feedback or request a new feature, please email
           <TouchableHighlight
             onPress={() =>
               Linking.openURL(

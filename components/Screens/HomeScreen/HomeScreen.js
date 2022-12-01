@@ -11,6 +11,7 @@ const HomeScreen = ({ navigation }) => {
     <>
       <Header toggleOverlay={toggleOverlay} />
       <ScrollView style={{ marginBottom: 10 }}>
+        {/* Todo: Scroll horizontal - multiple rows */}
         <Block
           img={require("../../../assets/food.jpg")}
           textToSpeak="I want food"
@@ -30,6 +31,8 @@ const HomeScreen = ({ navigation }) => {
         {/* <Block img={outsideImg} textToSpeak="I want to listen to music" />
         <Block img={outsideImg} textToSpeak="I want to play on a phone" /> */}
       </ScrollView>
+      {/* TODO: Menu at the bottom, favs + all */}
+      {/* To fav, click a heart / star at the top right */}
       <Menu
         navigation={navigation}
         visible={visible}
