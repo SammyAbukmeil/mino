@@ -1,15 +1,11 @@
-import { Button, Header, Icon, Overlay } from "@rneui/themed";
-import React, { useState } from "react";
-import { Image, ScrollView, StyleSheet } from "react-native";
+import { Header, Icon } from "@rneui/themed";
+import { Image, ScrollView } from "react-native";
 import Block from "../../../components/Block/Block";
+import useOverlay from "../../../hooks/useOverlay";
+import Menu from "../../Menu/Menu";
 
 const HomeScreen = ({ navigation }) => {
-  // TODO: Move to custom hook
-  const [visible, setVisible] = useState(false);
-
-  const toggleOverlay = () => {
-    setVisible(!visible);
-  };
+  const [visible, toggleOverlay] = useOverlay();
 
   return (
     <>
@@ -52,39 +48,13 @@ const HomeScreen = ({ navigation }) => {
         {/* <Block img={outsideImg} textToSpeak="I want to listen to music" />
         <Block img={outsideImg} textToSpeak="I want to play on a phone" /> */}
       </ScrollView>
-      {/* TODO: Move to component */}
-      <Overlay
-        isVisible={visible}
-        onBackdropPress={toggleOverlay}
-        style={{ padding: 30, width: 300 }}
-      >
-        <Button
-          title="About"
-          onPress={() => {
-            toggleOverlay();
-            navigation.navigate("Settings", { toggleOverlay, visible });
-          }}
-          style={styles.menuBtn}
-        />
-        <Button
-          title="Settings"
-          onPress={() => {
-            toggleOverlay();
-            navigation.navigate("Settings", { toggleOverlay, visible });
-          }}
-          style={styles.menuBtn}
-        />
-      </Overlay>
+      <Menu
+        navigation={navigation}
+        visible={visible}
+        toggleOverlay={toggleOverlay}
+      />
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  menuBtn: {
-    marginVertical: 12,
-    marginHorizontal: 10,
-    minWidth: 170,
-  },
-});
 
 export default HomeScreen;
