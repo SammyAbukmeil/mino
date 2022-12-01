@@ -1,9 +1,10 @@
 import { Button, Header, Icon, Overlay } from "@rneui/themed";
 import React, { useState } from "react";
-import { Image, ScrollView, StyleSheet, Text } from "react-native";
+import { Image, ScrollView, StyleSheet } from "react-native";
 import Block from "../../../components/Block/Block";
 
 const HomeScreen = ({ navigation }) => {
+  // TODO: Move to custom hook
   const [visible, setVisible] = useState(false);
 
   const toggleOverlay = () => {
@@ -27,14 +28,9 @@ const HomeScreen = ({ navigation }) => {
             color="#ffffff"
             type="feather"
             onPress={toggleOverlay}
-            buttonStyle={styles.button}
           />
         }
         rightContainerStyle={{ margin: 15 }}
-      />
-      <Button
-        title="Go to Settings"
-        onPress={() => navigation.navigate("Settings")}
       />
       <ScrollView style={{ marginBottom: 10 }}>
         <Block
@@ -56,38 +52,38 @@ const HomeScreen = ({ navigation }) => {
         {/* <Block img={outsideImg} textToSpeak="I want to listen to music" />
         <Block img={outsideImg} textToSpeak="I want to play on a phone" /> */}
       </ScrollView>
-      <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
-        <Icon
-          name="x"
-          type="feather"
-          color="black"
-          size={25}
-          iconStyle={{ marginRight: 10 }}
-          onPress={toggleOverlay}
-          style={styles.cross}
+      {/* TODO: Move to component */}
+      <Overlay
+        isVisible={visible}
+        onBackdropPress={toggleOverlay}
+        style={{ padding: 30, width: 300 }}
+      >
+        <Button
+          title="About"
+          onPress={() => {
+            toggleOverlay();
+            navigation.navigate("Settings", { toggleOverlay, visible });
+          }}
+          style={styles.menuBtn}
         />
-        <Text style={styles.textPrimary}>Hello!</Text>
-        <Text style={styles.textSecondary}>
-          Welcome to React Native Elements
-        </Text>
+        <Button
+          title="Settings"
+          onPress={() => {
+            toggleOverlay();
+            navigation.navigate("Settings", { toggleOverlay, visible });
+          }}
+          style={styles.menuBtn}
+        />
       </Overlay>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  cross: {
-    textAlign: "right",
-  },
-  textPrimary: {
-    marginVertical: 20,
-    textAlign: "center",
-    fontSize: 20,
-  },
-  textSecondary: {
-    marginBottom: 10,
-    textAlign: "center",
-    fontSize: 17,
+  menuBtn: {
+    marginVertical: 12,
+    marginHorizontal: 10,
+    minWidth: 170,
   },
 });
 
