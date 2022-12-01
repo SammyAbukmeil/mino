@@ -5,8 +5,13 @@ import { TouchableWithoutFeedback } from "react-native";
 const Block = ({ img, textToSpeak }) => (
   <TouchableWithoutFeedback onPress={() => Speech.speak(textToSpeak)}>
     <Card
-      borderRadius={10}
-      containerStyle={{ backgroundColor: "#e1eefa", marginBottom: 10 }}
+      containerStyle={{
+        backgroundColor: "#c3dff9",
+        marginBottom: 10,
+        borderRadius: 15,
+        borderWidth: 1,
+        borderColor: "#2089dc",
+      }}
     >
       <Card.Image
         style={{ width: "100%", height: 250, borderRadius: 10 }}

@@ -1,7 +1,7 @@
-import { Header, Icon } from "@rneui/themed";
-import { Image, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import Block from "../../../components/Block/Block";
 import useOverlay from "../../../hooks/useOverlay";
+import Header from "../../Header/Header";
 import Menu from "../../Menu/Menu";
 
 const HomeScreen = ({ navigation }) => {
@@ -9,25 +9,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <>
-      <Header
-        barStyle="default"
-        leftComponent={
-          <Image
-            source={require("../../../assets/mino-logo.png")}
-            style={{ width: 50, height: 50 }}
-          />
-        }
-        placement="center"
-        rightComponent={
-          <Icon
-            name="menu"
-            color="#ffffff"
-            type="feather"
-            onPress={toggleOverlay}
-          />
-        }
-        rightContainerStyle={{ margin: 15 }}
-      />
+      <Header toggleOverlay={toggleOverlay} />
       <ScrollView style={{ marginBottom: 10 }}>
         <Block
           img={require("../../../assets/food.jpg")}

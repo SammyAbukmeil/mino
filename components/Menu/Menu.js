@@ -14,6 +14,14 @@ const Menu = ({ navigation, visible, toggleOverlay }) => {
         style={styles.menuBtn}
       />
       <Button
+        title="About"
+        onPress={() => {
+          toggleOverlay();
+          navigation.navigate("About");
+        }}
+        style={styles.menuBtn}
+      />
+      <Button
         title="Settings"
         onPress={() => {
           toggleOverlay();
@@ -30,6 +38,8 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     marginHorizontal: 10,
     minWidth: 170,
+    borderRadius: 20,
+    borderBottomEndRadius: 20,
   },
 });
 
