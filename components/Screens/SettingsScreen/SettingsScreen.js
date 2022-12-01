@@ -1,17 +1,20 @@
 import { Switch, Text } from "@rneui/themed";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ScrollView } from "react-native";
-import Header from "../../Header/Header";
-
+import { ThemeContext } from "../../../contexts/ThemeContext";
 import useOverlay from "../../../hooks/useOverlay";
+import Header from "../../Header/Header";
 import Menu from "../../Menu/Menu";
 
 const SettingsScreen = ({ navigation }) => {
   const [visible, toggleOverlay] = useOverlay();
   const [checked, setChecked] = useState(false);
 
+  const { toggleTheme } = useContext(ThemeContext);
+
   const toggleSwitch = () => {
     setChecked(!checked);
+    toggleTheme();
   };
 
   return (
@@ -23,7 +26,7 @@ const SettingsScreen = ({ navigation }) => {
         <Switch
           style={{ margin: "auto", marginTop: 5 }}
           value={checked}
-          onValueChange={(value) => setChecked(value)}
+          onValueChange={toggleSwitch}
         />
         {/* <Text
           style={{

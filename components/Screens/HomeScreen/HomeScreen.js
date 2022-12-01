@@ -1,6 +1,6 @@
 import { ScrollView } from "react-native";
-import Block from "../../../components/Block/Block";
 import useOverlay from "../../../hooks/useOverlay";
+import Block from "../../Block/Block";
 import Header from "../../Header/Header";
 import Menu from "../../Menu/Menu";
 
