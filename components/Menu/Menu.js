@@ -12,6 +12,7 @@ const Menu = ({ navigation, visible, toggleOverlay }) => {
         title="Home"
         onPress={() => navigation.navigate("Home")}
         style={styles.menuBtn}
+        containerStyle={styles.btnContainer}
       />
       <Button
         title="About"
@@ -20,6 +21,7 @@ const Menu = ({ navigation, visible, toggleOverlay }) => {
           navigation.navigate("About");
         }}
         style={styles.menuBtn}
+        containerStyle={styles.btnContainer}
       />
       <Button
         title="Settings"
@@ -28,6 +30,7 @@ const Menu = ({ navigation, visible, toggleOverlay }) => {
           navigation.navigate("Settings");
         }}
         style={styles.menuBtn}
+        containerStyle={styles.btnContainer}
       />
     </Overlay>
   );
@@ -35,11 +38,13 @@ const Menu = ({ navigation, visible, toggleOverlay }) => {
 
 const styles = StyleSheet.create({
   menuBtn: {
-    marginVertical: 12,
-    marginHorizontal: 10,
-    minWidth: 170,
     borderRadius: 20,
     borderBottomEndRadius: 20,
+  },
+  btnContainer: {
+    width: 200,
+    marginHorizontal: 10,
+    marginVertical: 12,
   },
 });
 

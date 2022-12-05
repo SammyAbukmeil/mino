@@ -1,5 +1,5 @@
 import { Switch, Text } from "@rneui/themed";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ScrollView } from "react-native";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import useOverlay from "../../../hooks/useOverlay";
@@ -10,19 +10,32 @@ const SettingsScreen = ({ navigation }) => {
   const [visible, toggleOverlay] = useOverlay();
   const [checked, setChecked] = useState(false);
 
-  const { toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme, theme } = useContext(ThemeContext);
 
   const toggleSwitch = () => {
     setChecked(!checked);
     toggleTheme();
   };
 
+  useEffect(() => {
+    if (theme === "dark") {
+      setChecked(true);
+    }
+  }, []);
+
   return (
     <>
       <Header toggleOverlay={toggleOverlay} />
-      <ScrollView style={{ textAlign: "center", marginTop: 20 }}>
-        <Text h2>Settings</Text>
-        <Text style={{ marginTop: 20, fontSize: 20 }}>Dark Theme</Text>
+      <ScrollView
+        backgroundColor={theme === "dark" ? "#393939" : "#fff"}
+        style={{ marginTop: 20 }}
+      >
+        <Text h2Style={{ textAlign: "center" }} h2>
+          Settings
+        </Text>
+        <Text style={{ textAlign: "center", marginTop: 20, fontSize: 20 }}>
+          Dark Theme
+        </Text>
         <Switch
           style={{ margin: "auto", marginTop: 5 }}
           value={checked}

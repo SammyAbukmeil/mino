@@ -3,15 +3,24 @@ import useOverlay from "../../../hooks/useOverlay";
 import Block from "../../Block/Block";
 import Header from "../../Header/Header";
 import Menu from "../../Menu/Menu";
+import { ThemeContext } from "../../../contexts/ThemeContext";
+import { useContext } from "react";
 
 const HomeScreen = ({ navigation }) => {
   const [visible, toggleOverlay] = useOverlay();
 
+  const { theme } = useContext(ThemeContext);
+
   return (
     <>
       <Header toggleOverlay={toggleOverlay} />
-      <ScrollView style={{ marginBottom: 10 }}>
+      <ScrollView
+        backgroundColor={theme === "dark" ? "#393939" : "#fff"}
+        style={{ marginBottom: 10 }}
+      >
         {/* Todo: Scroll horizontal - multiple rows */}
+        {/* Row 1 - Food, Pizza, Salad */}
+        {/* Row 2 - Go Somewhere, Home, Outside, Garden */}
         <Block
           img={require("../../../assets/food.jpg")}
           textToSpeak="I want food"

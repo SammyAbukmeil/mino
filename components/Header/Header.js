@@ -8,7 +8,7 @@ const Header = ({ toggleOverlay }) => {
 
   return (
     <Head
-      backgroundColor={theme === "dark" ? "#000" : "#2089dc"}
+      backgroundColor={theme === "dark" ? "#393939" : "#2089dc"}
       barStyle="default"
       leftComponent={
         <Image
