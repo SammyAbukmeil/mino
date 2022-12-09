@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Switch, Text } from "@rneui/themed";
 import * as ImagePicker from "expo-image-picker";
 import { useContext, useEffect, useState } from "react";
@@ -38,6 +39,50 @@ const SettingsScreen = ({ navigation }) => {
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
+
+      try {
+        const previousUserBlocks = await AsyncStorage.getItem("@storage_Key");
+
+        if (previousUserBlocks) {
+          console.log("FOUND");
+          const parsedBlocks = JSON.parse(previousUserBlocks);
+
+          console.log(parsedBlocks);
+
+          await AsyncStorage.setItem(
+            "@storage_Key",
+            JSON.stringify([
+              ...parsedBlocks,
+              {
+                text: "I want to go for a run",
+                img: result.assets[0].uri,
+              },
+            ])
+          );
+        } else {
+          console.log("NOT FOUND");
+          await AsyncStorage.setItem(
+            "@storage_Key",
+            JSON.stringify([
+              {
+                text: "I want to go for a run",
+                img: result.assets[0].uri,
+              },
+            ])
+          );
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
+  const deleteBlocks = async () => {
+    try {
+      await AsyncStorage.removeItem("@storage_Key");
+      navigation.goBack();
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -64,7 +109,12 @@ const SettingsScreen = ({ navigation }) => {
           https://react-native-async-storage.github.io/async-storage/docs/install
         */}
         <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+          style={{
+            marginTop: 10,
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
           <Button title="Pick an image from camera roll" onPress={pickImage} />
           {image && (
@@ -73,20 +123,8 @@ const SettingsScreen = ({ navigation }) => {
               style={{ width: 200, height: 200 }}
             />
           )}
+          <Button title="Delete existing blocks" onPress={deleteBlocks} />
         </View>
-        {/* 
-          TODO: BASIC STORAGE 
-          https://react-native-async-storage.github.io/async-storage/docs/usage
-        */}
-        {/* 
-          TODO: IMAGE STORAGE 
-          https://docs.expo.dev/versions/latest/sdk/filesystem/
-          https://stackoverflow.com/questions/62763209/how-do-i-save-an-image-from-expo-image-picker-to-expo-file-system-and-then-rende
-        */}
-        {/* 
-          TODO: Resize
-          https://docs.expo.dev/versions/v47.0.0/sdk/imagemanipulator/ 
-        */}
       </ScrollView>
       <Menu
         navigation={navigation}

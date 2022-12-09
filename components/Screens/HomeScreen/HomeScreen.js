@@ -1,15 +1,26 @@
-import { ScrollView } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useContext, useState } from "react";
+import { Button, ScrollView } from "react-native";
+import { ThemeContext } from "../../../contexts/ThemeContext";
 import useOverlay from "../../../hooks/useOverlay";
 import Block from "../../Block/Block";
 import Header from "../../Header/Header";
 import Menu from "../../Menu/Menu";
-import { ThemeContext } from "../../../contexts/ThemeContext";
-import { useContext } from "react";
 
 const HomeScreen = ({ navigation }) => {
   const [visible, toggleOverlay] = useOverlay();
+  const [userBlocks, setUserBlocks] = useState([]);
 
   const { theme } = useContext(ThemeContext);
+
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("@storage_Key");
+      setUserBlocks(JSON.parse(value));
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
@@ -37,6 +48,11 @@ const HomeScreen = ({ navigation }) => {
           img={require("../../../assets/home.jpg")}
           textToSpeak="I want to go home"
         />
+        <Button title="Get Data" onPress={getData} />
+        {userBlocks &&
+          userBlocks.map((block, i) => (
+            <Block key={i} img={{ uri: block.img }} textToSpeak={block.text} />
+          ))}
         {/* <Block img={outsideImg} textToSpeak="I want to listen to music" />
         <Block img={outsideImg} textToSpeak="I want to play on a phone" /> */}
       </ScrollView>
