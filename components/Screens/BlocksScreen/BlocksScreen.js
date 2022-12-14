@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Button, Input, Text } from "@rneui/themed";
+import { Button, Divider, Input, Text } from "@rneui/themed";
 import * as ImagePicker from "expo-image-picker";
 import { useContext, useState } from "react";
 import { Image, ScrollView, View } from "react-native";
@@ -47,6 +47,8 @@ const BlocksScreen = ({ navigation }) => {
   };
 
   const addBlock = async () => {
+    // TODO: Add validation
+
     try {
       const previousUserBlocks = await AsyncStorage.getItem("@blocks");
 
@@ -93,7 +95,27 @@ const BlocksScreen = ({ navigation }) => {
             justifyContent: "center",
           }}
         >
-          <Button title="Pick an image from camera roll" onPress={pickImage} />
+          <Text style={{ fontSize: 22, textAlign: "center", marginTop: 20 }}>
+            Here you can add / delete blocks on the homepage.
+          </Text>
+          <Divider
+            style={{ width: "80%", marginVertical: 30 }}
+            color="#2089dc"
+            width={1}
+            orientation="horizontal"
+          />
+          <Text
+            style={{
+              fontSize: 22,
+              marginHorizontal: 30,
+              marginVertical: 20,
+              textAlign: "center",
+            }}
+          >
+            Select an image, and some text, and click add. It will add that
+            image with the text to speak on the homepage.
+          </Text>
+          <Button title="Select An Image" onPress={pickImage} />
           {img && (
             <>
               <Image
@@ -116,8 +138,23 @@ const BlocksScreen = ({ navigation }) => {
               )}
             </>
           )}
+          <Divider
+            style={{ width: "80%", marginVertical: 50 }}
+            color="#2089dc"
+            width={1}
+            orientation="horizontal"
+          />
+          <Text
+            style={{
+              fontSize: 22,
+              marginHorizontal: 30,
+              textAlign: "center",
+            }}
+          >
+            If you'd like to start again, you can delete all existing blocks.
+          </Text>
           <Button
-            containerStyle={{ marginTop: 10 }}
+            containerStyle={{ marginTop: 25 }}
             title="Delete existing blocks"
             onPress={deleteBlocks}
           />

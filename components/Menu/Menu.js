@@ -18,7 +18,7 @@ const Menu = ({ navigation, visible, toggleOverlay }) => {
         containerStyle={styles.btnContainer}
       />
       <Button
-        title="Add Blocks"
+        title="Blocks"
         onPress={() => {
           toggleOverlay();
           navigation.navigate("Blocks");

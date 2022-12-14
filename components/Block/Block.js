@@ -41,4 +41,5 @@ const Block = ({ img, textToSpeak }) => (
     </Card>
   </TouchableWithoutFeedback>
 );
+
 export default Block;
