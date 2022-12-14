@@ -10,7 +10,19 @@ const Menu = ({ navigation, visible, toggleOverlay }) => {
     >
       <Button
         title="Home"
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => {
+          toggleOverlay();
+          navigation.navigate("Home");
+        }}
+        style={styles.menuBtn}
+        containerStyle={styles.btnContainer}
+      />
+      <Button
+        title="Add Blocks"
+        onPress={() => {
+          toggleOverlay();
+          navigation.navigate("Blocks");
+        }}
         style={styles.menuBtn}
         containerStyle={styles.btnContainer}
       />

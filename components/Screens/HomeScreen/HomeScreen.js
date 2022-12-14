@@ -1,6 +1,6 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useContext, useState } from "react";
-import { Button, ScrollView } from "react-native";
+import { useContext, useEffect } from "react";
+import { ScrollView } from "react-native";
+import { BlockContext } from "../../../contexts/BlockContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import useOverlay from "../../../hooks/useOverlay";
 import Block from "../../Block/Block";
@@ -8,19 +8,13 @@ import Header from "../../Header/Header";
 import Menu from "../../Menu/Menu";
 
 const HomeScreen = ({ navigation }) => {
-  const [visible, toggleOverlay] = useOverlay();
-  const [userBlocks, setUserBlocks] = useState([]);
-
   const { theme } = useContext(ThemeContext);
+  const { blocks, getBlocks } = useContext(BlockContext);
+  const [visible, toggleOverlay] = useOverlay();
 
-  const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem("@storage_Key");
-      setUserBlocks(JSON.parse(value));
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  useEffect(() => {
+    getBlocks();
+  }, []);
 
   return (
     <>
@@ -48,9 +42,9 @@ const HomeScreen = ({ navigation }) => {
           img={require("../../../assets/home.jpg")}
           textToSpeak="I want to go home"
         />
-        <Button title="Get Data" onPress={getData} />
-        {userBlocks &&
-          userBlocks.map((block, i) => (
+        {/* <Button title="Get Data" onPress={getData} /> */}
+        {blocks &&
+          blocks.map((block, i) => (
             <Block key={i} img={{ uri: block.img }} textToSpeak={block.text} />
           ))}
         {/* <Block img={outsideImg} textToSpeak="I want to listen to music" />
