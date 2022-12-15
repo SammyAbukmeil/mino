@@ -85,7 +85,13 @@ const BlocksScreen = ({ navigation }) => {
     <>
       <Header toggleOverlay={toggleOverlay} />
       <ScrollView style={{ marginTop: 20 }}>
-        <Text h2Style={{ textAlign: "center" }} h2>
+        <Text
+          h2Style={{
+            textAlign: "center",
+            fontFamily: "Merriweather_400Regular",
+          }}
+          h2
+        >
           Blocks
         </Text>
         <View
@@ -97,7 +103,15 @@ const BlocksScreen = ({ navigation }) => {
             justifyContent: "center",
           }}
         >
-          <Text style={{ fontSize: 22, textAlign: "center", marginTop: 20 }}>
+          <Text
+            style={{
+              fontSize: 22,
+              textAlign: "center",
+              marginTop: 20,
+              fontFamily: "WorkSans_400Regular",
+              paddingHorizontal: 20,
+            }}
+          >
             Here you can add or delete blocks on the homepage.
           </Text>
           <Text
@@ -106,12 +120,17 @@ const BlocksScreen = ({ navigation }) => {
               marginHorizontal: 30,
               marginVertical: 20,
               textAlign: "center",
+              fontFamily: "WorkSans_400Regular",
             }}
           >
             Select an image, and some text, and click add. It will add that
             image with the text to speak on the homepage.
           </Text>
-          <Button title="Select An Image" onPress={pickImage} />
+          <Button
+            title="Select An Image"
+            titleStyle={{ fontFamily: "WorkSans_400Regular" }}
+            onPress={pickImage}
+          />
           {img && (
             <>
               <Image
@@ -121,7 +140,7 @@ const BlocksScreen = ({ navigation }) => {
               <Input
                 placeholder="Text To Speak..."
                 onChangeText={(value) => setText(value)}
-                style={{ padding: 5 }}
+                style={{ padding: 5, fontFamily: "WorkSans_400Regular" }}
                 containerStyle={{ marginVertical: 25, paddingHorizontal: 40 }}
                 errorStyle={{ color: "red" }}
                 errorMessage={errorText}
@@ -129,11 +148,17 @@ const BlocksScreen = ({ navigation }) => {
               <Button
                 containerStyle={{ marginTop: 10 }}
                 title="Add block"
+                titleStyle={{ fontFamily: "WorkSans_400Regular" }}
                 onPress={addBlock}
               />
               {added && (
                 <Text
-                  style={{ color: "green", fontWeight: "700", marginTop: 20 }}
+                  style={{
+                    color: "green",
+                    fontWeight: "700",
+                    marginTop: 20,
+                    fontFamily: "WorkSans_400Regular",
+                  }}
                 >
                   Sucessfully Added New Block
                 </Text>
@@ -151,6 +176,7 @@ const BlocksScreen = ({ navigation }) => {
               fontSize: 22,
               marginHorizontal: 30,
               textAlign: "center",
+              fontFamily: "WorkSans_400Regular",
             }}
           >
             If you'd like to start again, you can delete all existing blocks.
@@ -159,9 +185,17 @@ const BlocksScreen = ({ navigation }) => {
             containerStyle={{ marginTop: 25 }}
             title="Delete existing blocks"
             onPress={deleteBlocks}
+            titleStyle={{ fontFamily: "WorkSans_400Regular" }}
           />
           {deleted && (
-            <Text style={{ color: "green", fontWeight: "700", marginTop: 20 }}>
+            <Text
+              style={{
+                color: "green",
+                fontWeight: "700",
+                marginTop: 20,
+                fontFamily: "WorkSans_400Regular",
+              }}
+            >
               Sucessfully Deleted All Blocks
             </Text>
           )}

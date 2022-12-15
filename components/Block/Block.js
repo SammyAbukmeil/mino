@@ -16,7 +16,14 @@ const Block = ({ img, textToSpeak }) => (
         style={{ width: "100%", height: 250, borderRadius: 10 }}
         source={img}
       />
-      <Card.Title style={{ fontSize: 25, paddingTop: 25, paddingBottom: 10 }}>
+      <Card.Title
+        style={{
+          fontSize: 25,
+          paddingTop: 25,
+          paddingBottom: 10,
+          fontFamily: "WorkSans_400Regular",
+        }}
+      >
         {textToSpeak}
       </Card.Title>
       <Button
@@ -35,6 +42,7 @@ const Block = ({ img, textToSpeak }) => (
           marginBottom: 0,
         }}
         title="Speak"
+        titleStyle={{ fontFamily: "WorkSans_700Bold" }}
         onPress={() => Speech.speak(textToSpeak)}
       />
     </Card>

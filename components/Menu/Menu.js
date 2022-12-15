@@ -10,6 +10,7 @@ const Menu = ({ navigation, visible, toggleOverlay }) => {
     >
       <Button
         title="Home"
+        titleStyle={styles.menuTitle}
         onPress={() => {
           toggleOverlay();
           navigation.navigate("Home");
@@ -19,6 +20,7 @@ const Menu = ({ navigation, visible, toggleOverlay }) => {
       />
       <Button
         title="Blocks"
+        titleStyle={styles.menuTitle}
         onPress={() => {
           toggleOverlay();
           navigation.navigate("Blocks");
@@ -28,6 +30,7 @@ const Menu = ({ navigation, visible, toggleOverlay }) => {
       />
       <Button
         title="About"
+        titleStyle={styles.menuTitle}
         onPress={() => {
           toggleOverlay();
           navigation.navigate("About");
@@ -43,6 +46,9 @@ const styles = StyleSheet.create({
   menuBtn: {
     borderRadius: 20,
     borderBottomEndRadius: 20,
+  },
+  menuTitle: {
+    fontFamily: "WorkSans_700Bold",
   },
   btnContainer: {
     width: 200,
