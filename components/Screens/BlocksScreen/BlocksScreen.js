@@ -16,6 +16,7 @@ const BlocksScreen = ({ navigation }) => {
   const [text, setText] = useState("");
   const [deleted, setDeleted] = useState(false);
   const [added, setAdded] = useState(false);
+  const [errorText, setErrorText] = useState("");
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -45,7 +46,12 @@ const BlocksScreen = ({ navigation }) => {
   };
 
   const addBlock = async () => {
-    // TODO: Add validation
+    if (!text) {
+      setErrorText("ENTER TEXT TO SPEAK");
+      return;
+    }
+
+    setErrorText("");
 
     try {
       const previousUserBlocks = await AsyncStorage.getItem("@blocks");
@@ -85,20 +91,15 @@ const BlocksScreen = ({ navigation }) => {
         <View
           style={{
             marginTop: 10,
+            marginBottom: 30,
             flex: 1,
             alignItems: "center",
             justifyContent: "center",
           }}
         >
           <Text style={{ fontSize: 22, textAlign: "center", marginTop: 20 }}>
-            Here you can add / delete blocks on the homepage.
+            Here you can add or delete blocks on the homepage.
           </Text>
-          <Divider
-            style={{ width: "80%", marginVertical: 30 }}
-            color="#2089dc"
-            width={1}
-            orientation="horizontal"
-          />
           <Text
             style={{
               fontSize: 22,
@@ -115,11 +116,15 @@ const BlocksScreen = ({ navigation }) => {
             <>
               <Image
                 source={{ uri: img }}
-                style={{ width: 200, height: 200, marginTop: 10 }}
+                style={{ width: 200, height: 200, marginTop: 25 }}
               />
               <Input
                 placeholder="Text To Speak..."
                 onChangeText={(value) => setText(value)}
+                style={{ padding: 5 }}
+                containerStyle={{ marginVertical: 25, paddingHorizontal: 40 }}
+                errorStyle={{ color: "red" }}
+                errorMessage={errorText}
               />
               <Button
                 containerStyle={{ marginTop: 10 }}
@@ -127,7 +132,9 @@ const BlocksScreen = ({ navigation }) => {
                 onPress={addBlock}
               />
               {added && (
-                <Text style={{ color: "green", fontWeight: "700" }}>
+                <Text
+                  style={{ color: "green", fontWeight: "700", marginTop: 20 }}
+                >
                   Sucessfully Added New Block
                 </Text>
               )}
@@ -154,7 +161,7 @@ const BlocksScreen = ({ navigation }) => {
             onPress={deleteBlocks}
           />
           {deleted && (
-            <Text style={{ color: "green", fontWeight: "700" }}>
+            <Text style={{ color: "green", fontWeight: "700", marginTop: 20 }}>
               Sucessfully Deleted All Blocks
             </Text>
           )}

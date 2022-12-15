@@ -29,7 +29,6 @@ export default () => {
         <SafeAreaProvider>
           <NavigationContainer>
             <Stack.Navigator>
-              {/* TODO: REMOVE BEFORE COMMITING */}
               {/* <Stack.Navigator initialRouteName="Blocks"> */}
               <Stack.Screen
                 options={{ headerShown: false }}
