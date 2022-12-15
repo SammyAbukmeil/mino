@@ -35,15 +35,6 @@ const Menu = ({ navigation, visible, toggleOverlay }) => {
         style={styles.menuBtn}
         containerStyle={styles.btnContainer}
       />
-      <Button
-        title="Settings"
-        onPress={() => {
-          toggleOverlay();
-          navigation.navigate("Settings");
-        }}
-        style={styles.menuBtn}
-        containerStyle={styles.btnContainer}
-      />
     </Overlay>
   );
 };

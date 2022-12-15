@@ -4,13 +4,11 @@ import * as ImagePicker from "expo-image-picker";
 import { useContext, useState } from "react";
 import { Image, ScrollView, View } from "react-native";
 import { BlockContext } from "../../../contexts/BlockContext";
-import { ThemeContext } from "../../../contexts/ThemeContext";
 import useOverlay from "../../../hooks/useOverlay";
 import Header from "../../Header/Header";
 import Menu from "../../Menu/Menu";
 
 const BlocksScreen = ({ navigation }) => {
-  const { theme } = useContext(ThemeContext);
   const { getBlocks } = useContext(BlockContext);
   const [visible, toggleOverlay] = useOverlay();
 
@@ -80,10 +78,7 @@ const BlocksScreen = ({ navigation }) => {
   return (
     <>
       <Header toggleOverlay={toggleOverlay} />
-      <ScrollView
-        backgroundColor={theme === "dark" ? "#393939" : "#fff"}
-        style={{ marginTop: 20 }}
-      >
+      <ScrollView style={{ marginTop: 20 }}>
         <Text h2Style={{ textAlign: "center" }} h2>
           Blocks
         </Text>

@@ -1,19 +1,31 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createTheme, ThemeProvider } from "@rneui/themed";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import AboutScreen from "./components/Screens/AboutScreen/AboutScreen";
 import BlocksScreen from "./components/Screens/BlocksScreen/BlocksScreen";
 import HomeScreen from "./components/Screens/HomeScreen/HomeScreen";
-import SettingsScreen from "./components/Screens/SettingsScreen/SettingsScreen";
 import { BlockProvider } from "./contexts/BlockContext";
-import { ThemeProvider } from "./contexts/ThemeContext";
+
+const theme = createTheme({
+  lightColors: {
+    primary: "#0077B6",
+  },
+  components: {
+    Card: {
+      containerStyle: {
+        backgroundColor: "#48CAE4",
+      },
+    },
+  },
+});
 
 const Stack = createNativeStackNavigator();
 
 export default () => {
   return (
-    <BlockProvider>
-      <ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <BlockProvider>
         <SafeAreaProvider>
           <NavigationContainer>
             <Stack.Navigator>
@@ -34,15 +46,10 @@ export default () => {
                 name="Blocks"
                 component={BlocksScreen}
               />
-              <Stack.Screen
-                options={{ headerShown: false }}
-                name="Settings"
-                component={SettingsScreen}
-              />
             </Stack.Navigator>
           </NavigationContainer>
         </SafeAreaProvider>
-      </ThemeProvider>
-    </BlockProvider>
+      </BlockProvider>
+    </ThemeProvider>
   );
 };

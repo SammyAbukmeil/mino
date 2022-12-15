@@ -1,14 +1,9 @@
 import { Header as Head, Icon } from "@rneui/themed";
-import { useContext } from "react";
 import { Image } from "react-native";
-import { ThemeContext } from "../../contexts/ThemeContext";
 
 const Header = ({ toggleOverlay }) => {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <Head
-      backgroundColor={theme === "dark" ? "#393939" : "#2089dc"}
       barStyle="default"
       leftComponent={
         <Image

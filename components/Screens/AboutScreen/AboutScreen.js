@@ -2,8 +2,8 @@ import { Text } from "@rneui/themed";
 import {
   Linking,
   ScrollView,
-  TouchableHighlight,
   StyleSheet,
+  TouchableHighlight,
 } from "react-native";
 import useOverlay from "../../../hooks/useOverlay";
 import Header from "../../Header/Header";
@@ -87,8 +87,9 @@ const AboutScreen = ({ navigation }) => {
             style={{
               textAlign: "center",
               textDecorationLine: "underline",
-              color: "blue",
+              color: "#0077B6",
               fontSize: 20,
+              marginTop: 3,
             }}
           >
             mino.requests@gmail.com

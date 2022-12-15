@@ -1,14 +1,12 @@
 import { useContext, useEffect } from "react";
 import { ScrollView } from "react-native";
 import { BlockContext } from "../../../contexts/BlockContext";
-import { ThemeContext } from "../../../contexts/ThemeContext";
 import useOverlay from "../../../hooks/useOverlay";
 import Block from "../../Block/Block";
 import Header from "../../Header/Header";
 import Menu from "../../Menu/Menu";
 
 const HomeScreen = ({ navigation }) => {
-  const { theme } = useContext(ThemeContext);
   const { blocks, getBlocks } = useContext(BlockContext);
   const [visible, toggleOverlay] = useOverlay();
 
@@ -19,10 +17,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <>
       <Header toggleOverlay={toggleOverlay} />
-      <ScrollView
-        backgroundColor={theme === "dark" ? "#393939" : "#fff"}
-        style={{ marginBottom: 10 }}
-      >
+      <ScrollView style={{ marginBottom: 10 }}>
         {/* Todo: Scroll horizontal - multiple rows */}
         {/* Row 1 - Food, Pizza, Salad */}
         {/* Row 2 - Go Somewhere, Home, Outside, Garden */}

@@ -6,7 +6,6 @@ const Block = ({ img, textToSpeak }) => (
   <TouchableWithoutFeedback onPress={() => Speech.speak(textToSpeak)}>
     <Card
       containerStyle={{
-        backgroundColor: "#c3dff9",
         marginBottom: 10,
         borderRadius: 15,
         borderWidth: 1,
@@ -17,7 +16,7 @@ const Block = ({ img, textToSpeak }) => (
         style={{ width: "100%", height: 250, borderRadius: 10 }}
         source={img}
       />
-      <Card.Title style={{ fontSize: 20, paddingTop: 25, paddingBottom: 10 }}>
+      <Card.Title style={{ fontSize: 25, paddingTop: 25, paddingBottom: 10 }}>
         {textToSpeak}
       </Card.Title>
       <Button
